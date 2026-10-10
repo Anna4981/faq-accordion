@@ -1,0 +1,223 @@
+:root {
+  --navy: #1b2a6b;
+  --navy-soft: #4a5a8f;
+  --orange: #f08a24;
+  --orange-tint: #fff4e8;
+  --bg: #fffaf4;
+  --card: #ffffff;
+  --border: #e3e6f0;
+  --radius: 14px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--navy);
+  background: linear-gradient(180deg, #fde9d3 0, var(--bg) 220px);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.faq {
+  width: min(100% - 2rem, 760px);
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4rem) 0;
+}
+
+/* ---------- Header ---------- */
+.eyebrow {
+  margin: 0 0 0.5rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--navy-soft);
+}
+
+.faq__header h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.faq__intro {
+  margin: 0 0 1.25rem;
+  color: var(--navy-soft);
+}
+
+.faq__toggle-all {
+  font: inherit;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: none;
+  border: 1.5px solid var(--orange);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.faq__toggle-all:hover,
+.faq__toggle-all:focus-visible {
+  background: var(--orange);
+  color: #fff;
+}
+
+/* ---------- Accordion ---------- */
+.accordion {
+  margin-top: 2rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.accordion__item {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+/* Accent bar for the active state */
+.accordion__item::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--orange);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.accordion__item.active {
+  border-color: var(--orange);
+  box-shadow: 0 8px 24px rgba(27, 42, 107, 0.08);
+}
+
+.accordion__item.active::before {
+  transform: scaleY(1);
+}
+
+.accordion__heading {
+  margin: 0;
+  font-size: inherit;
+}
+
+.accordion__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  font: inherit;
+  font-weight: 700;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  text-align: left;
+  color: var(--navy);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.accordion__question:hover {
+  background: #f6f8ff;
+}
+
+.accordion__question:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: -3px;
+}
+
+.accordion__item.active .accordion__question {
+  background: var(--orange-tint);
+}
+
+/* Plus icon that turns into a cross */
+.accordion__icon {
+  position: relative;
+  flex: 0 0 1.25rem;
+  height: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.accordion__icon::before,
+.accordion__icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background: var(--orange);
+  border-radius: 2px;
+  transform: translate(-50%, -50%);
+}
+
+.accordion__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.accordion__item.active .accordion__icon {
+  transform: rotate(45deg);
+}
+
+/* Answer panel: animates height using grid rows */
+.accordion__answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.accordion__item.active .accordion__answer {
+  grid-template-rows: 1fr;
+}
+
+.accordion__answer-inner {
+  overflow: hidden;
+  padding: 0 1.25rem;
+}
+
+.accordion__answer-inner p {
+  margin: 0;
+  padding: 0.25rem 0 1.25rem;
+  color: var(--navy-soft);
+}
+
+code {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.88em;
+  background: #eef1fb;
+  color: var(--navy);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .accordion__question {
+    padding: 1rem;
+  }
+
+  .accordion__answer-inner {
+    padding: 0 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}

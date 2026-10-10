@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ Accordion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="faq">
+    <header class="faq__header">
+      <p class="eyebrow">Web Development Track</p>
+      <h1>Frequently Asked Questions</h1>
+      <p class="faq__intro">Click a question to expand or collapse its answer.</p>
+      <button type="button" class="faq__toggle-all" id="toggleAll">Expand all</button>
+    </header>
+
+    <section class="accordion" id="accordion">
+
+      <article class="accordion__item">
+        <h2 class="accordion__heading">
+          <button type="button" class="accordion__question" id="q1" aria-expanded="false" aria-controls="a1">
+            <span>What is an FAQ accordion?</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="accordion__answer" id="a1" role="region" aria-labelledby="q1">
+          <div class="accordion__answer-inner">
+            <p>An accordion is a stacked list of headings. Clicking a heading reveals or hides the content beneath it, so people can scan the questions and only read the answers they need.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="accordion__item">
+        <h2 class="accordion__heading">
+          <button type="button" class="accordion__question" id="q2" aria-expanded="false" aria-controls="a2">
+            <span>What does classList.toggle do?</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="accordion__answer" id="a2" role="region" aria-labelledby="q2">
+          <div class="accordion__answer-inner">
+            <p><code>classList.toggle("open")</code> adds the class if the element does not have it, and removes it if it does. It returns <code>true</code> when the class was added and <code>false</code> when removed.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="accordion__item">
+        <h2 class="accordion__heading">
+          <button type="button" class="accordion__question" id="q3" aria-expanded="false" aria-controls="a3">
+            <span>Why should a button be used for the question?</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="accordion__answer" id="a3" role="region" aria-labelledby="q3">
+          <div class="accordion__answer-inner">
+            <p>A <code>&lt;button&gt;</code> is focusable with the Tab key and can be activated with Enter or Space by default. Screen readers also announce it as an interactive control. A plain <code>&lt;div&gt;</code> needs extra code to get any of this.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="accordion__item">
+        <h2 class="accordion__heading">
+          <button type="button" class="accordion__question" id="q4" aria-expanded="false" aria-controls="a4">
+            <span>What is event handling in JavaScript?</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="accordion__answer" id="a4" role="region" aria-labelledby="q4">
+          <div class="accordion__answer-inner">
+            <p>Event handling means running code in response to something that happens on the page, such as a click, key press or scroll. You attach a function to an element with <code>addEventListener</code>, and the browser calls it when the event occurs.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="accordion__item">
+        <h2 class="accordion__heading">
+          <button type="button" class="accordion__question" id="q5" aria-expanded="false" aria-controls="a5">
+            <span>Can more than one answer stay open?</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="accordion__answer" id="a5" role="region" aria-labelledby="q5">
+          <div class="accordion__answer-inner">
+            <p>It is a design choice. This page opens one answer at a time to keep the list tidy. Change <code>ALLOW_MULTIPLE</code> to <code>true</code> in <code>script.js</code> if you want several answers open together.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="accordion__item">
+        <h2 class="accordion__heading">
+          <button type="button" class="accordion__question" id="q6" aria-expanded="false" aria-controls="a6">
+            <span>How is the active state shown?</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="accordion__answer" id="a6" role="region" aria-labelledby="q6">
+          <div class="accordion__answer-inner">
+            <p>The open item gets an <code>active</code> class. CSS uses it to add an orange accent bar, tint the question, and rotate the plus icon into a cross.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="accordion__item">
+        <h2 class="accordion__heading">
+          <button type="button" class="accordion__question" id="q7" aria-expanded="false" aria-controls="a7">
+            <span>How does the layout adapt to small screens?</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="accordion__answer" id="a7" role="region" aria-labelledby="q7">
+          <div class="accordion__answer-inner">
+            <p>The container is fluid with a maximum width, text sizes use <code>clamp()</code>, and a media query reduces padding on narrow screens. Touch targets stay large enough to tap comfortably.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="accordion__item">
+        <h2 class="accordion__heading">
+          <button type="button" class="accordion__question" id="q8" aria-expanded="false" aria-controls="a8">
+            <span>Which attributes make it accessible?</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="accordion__answer" id="a8" role="region" aria-labelledby="q8">
+          <div class="accordion__answer-inner">
+            <p><code>aria-expanded</code> tells assistive technology whether the answer is open, and <code>aria-controls</code> links the button to the panel it controls. A visible focus outline helps keyboard users see where they are.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="accordion__item">
+        <h2 class="accordion__heading">
+          <button type="button" class="accordion__question" id="q9" aria-expanded="false" aria-controls="a9">
+            <span>Why animate with CSS instead of JavaScript?</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="accordion__answer" id="a9" role="region" aria-labelledby="q9">
+          <div class="accordion__answer-inner">
+            <p>JavaScript only toggles a class. CSS handles the smooth open and close, which keeps the script short and lets the browser optimise the animation. Users who prefer reduced motion get no animation.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="accordion__item">
+        <h2 class="accordion__heading">
+          <button type="button" class="accordion__question" id="q10" aria-expanded="false" aria-controls="a10">
+            <span>Where can I learn more?</span>
+            <span class="accordion__icon" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div class="accordion__answer" id="a10" role="region" aria-labelledby="q10">
+          <div class="accordion__answer-inner">
+            <p>MDN Web Docs has clear pages on <code>Element.classList</code> and <code>EventTarget.addEventListener</code>. Both are good references for this project.</p>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
